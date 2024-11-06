@@ -124,8 +124,6 @@ public class CatDeportistas extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(550, 570));
         setPreferredSize(new java.awt.Dimension(550, 570));
 
-        jButton5.setBackground(null);
-        jButton5.setForeground(null);
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/back-button (1).png"))); // NOI18N
         jButton5.setToolTipText("Regresar");
         jButton5.setFocusPainted(false);
