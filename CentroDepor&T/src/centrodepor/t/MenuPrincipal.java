@@ -5,15 +5,18 @@ import javax.swing.JOptionPane;
 
 public class MenuPrincipal extends javax.swing.JFrame {
 
-    //Atributos
+    // Atributos
     private int salir;
     
+    // Constructor
     public MenuPrincipal() {
         initComponents();
         setTitle("Centro de Capacitación Depor & T");
         setLocationRelativeTo(null);
         setResizable(false);   
     }
+    
+    // Métodos
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -23,10 +26,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         buttonGroup2 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        cajasBoton = new javax.swing.JButton();
+        registroBoton = new javax.swing.JButton();
+        catalogosBoton = new javax.swing.JButton();
+        facturacionBoton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(550, 520));
@@ -49,49 +52,50 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 30, -1, -1));
 
-        jButton2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jButton2.setText("Cajas");
-        jButton2.setToolTipText("Cajas");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        cajasBoton.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        cajasBoton.setText("Cajas");
+        cajasBoton.setToolTipText("Cajas");
+        cajasBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                cajasBotonActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, 350, 60));
+        getContentPane().add(cajasBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, 350, 60));
 
-        jButton6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jButton6.setText("Registro de Usuarios");
-        jButton6.setToolTipText("Registro de Usuarios");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        registroBoton.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        registroBoton.setText("Registro de Usuarios");
+        registroBoton.setToolTipText("Registro de Usuarios");
+        registroBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                registroBotonActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 350, 60));
+        getContentPane().add(registroBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 350, 60));
 
-        jButton7.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jButton7.setText("Catálogos");
-        jButton7.setToolTipText("Catálogos");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        catalogosBoton.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        catalogosBoton.setText("Catálogos");
+        catalogosBoton.setToolTipText("Catálogos");
+        catalogosBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                catalogosBotonActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 350, 60));
+        getContentPane().add(catalogosBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 350, 60));
 
-        jButton8.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jButton8.setText("Facturación");
-        jButton8.setToolTipText("Facturación");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        facturacionBoton.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        facturacionBoton.setText("Facturación");
+        facturacionBoton.setToolTipText("Facturación");
+        facturacionBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                facturacionBotonActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 350, 60));
+        getContentPane().add(facturacionBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 350, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Salir
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         salir = JOptionPane.showConfirmDialog(null, "¿Desea salir del sistema?",
                 "Salir", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -100,27 +104,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        JOptionPane.showMessageDialog(null, "Opción temporalmente no disponible.\nInténtelo de nuevo más tarde.", "Opción no disponible", JOptionPane.WARNING_MESSAGE);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void cajasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajasBotonActionPerformed
+        this.dispose();
+        new Cajas().show(true);
+    }//GEN-LAST:event_cajasBotonActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void registroBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroBotonActionPerformed
         this.dispose();
         new RegistroUsuarios().show(true);
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_registroBotonActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void catalogosBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_catalogosBotonActionPerformed
         this.dispose();
         new EscogenciaCatalogos().show(true);
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_catalogosBotonActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        JOptionPane.showMessageDialog(null, "Opción temporalmente no disponible.\nInténtelo de nuevo más tarde.", "Opción no disponible", JOptionPane.WARNING_MESSAGE);
-    }//GEN-LAST:event_jButton8ActionPerformed
+    private void facturacionBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facturacionBotonActionPerformed
+        this.dispose();
+        new Facturacion().show(true);
+    }//GEN-LAST:event_facturacionBotonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -149,7 +153,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuPrincipal().setVisible(true);
+                new MenuPrincipal().setVisible(false);
             }
         });
     }
@@ -157,11 +161,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton cajasBoton;
+    private javax.swing.JButton catalogosBoton;
+    private javax.swing.JButton facturacionBoton;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton registroBoton;
     // End of variables declaration//GEN-END:variables
 }

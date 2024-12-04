@@ -1,9 +1,10 @@
+// Escogencia de Catálogos
 package centrodepor.t;
 
 import javax.swing.JOptionPane;
 
 public class EscogenciaCatalogos extends javax.swing.JFrame {
-
+    // Constructor
     public EscogenciaCatalogos() {
         initComponents();
         setTitle("Catálogos Disponibles");
@@ -11,6 +12,7 @@ public class EscogenciaCatalogos extends javax.swing.JFrame {
         setResizable(false);
     }
 
+    // Métodos
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -89,33 +91,36 @@ public class EscogenciaCatalogos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    // Regresar al Menú Principal
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         this.dispose();
         new MenuPrincipal().show(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    // Acceder al Catálogo de Deportistas
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.dispose();
         new CatDeportistas().show(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    // Acceder al Catálogo de Padres
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.dispose();
         new CatPadres().show(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    // Acceder al Catálogo de Deportes
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        JOptionPane.showMessageDialog(null, "Opción temporalmente no disponible.\nInténtelo de nuevo más tarde.", "Opción no disponible", JOptionPane.WARNING_MESSAGE);
+        this.dispose();
+        new CatDeportes().show(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JOptionPane.showMessageDialog(null, "Opción temporalmente no disponible.\nInténtelo de nuevo más tarde.", "Opción no disponible", JOptionPane.WARNING_MESSAGE);
+        this.dispose();
+        new CatRutinas().show(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

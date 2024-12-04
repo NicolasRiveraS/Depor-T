@@ -1,23 +1,22 @@
 package centrodepor.t;
 
-public class CatalogoDeportes {
-    private String nombre;
+public class CatalogoDeportes extends Catalogos {
+    protected String nombreDeporte;
     private String caracteristicas;
-    private String estado;
 
     public CatalogoDeportes() {
-        this.nombre = "";
+        super();
+        this.nombreDeporte = "";
         this.caracteristicas = "";
-        this.estado = "Activo";
     }
 
     // Métodos
-    public String getNombre() {
-        return nombre;
+    public String getNombreDeporte() {
+        return nombreDeporte;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreDeporte(String nombreDeporte) {
+        this.nombreDeporte = nombreDeporte;
     }
 
     public String getCaracteristicas() {

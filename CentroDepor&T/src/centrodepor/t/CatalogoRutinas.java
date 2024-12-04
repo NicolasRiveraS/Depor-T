@@ -1,47 +1,48 @@
 package centrodepor.t;
 
-public class CatalogoRutinas {
-    private String descripcion;
-    private String deporte;
-    private int duracion;
-    private String estado;
+public class CatalogoRutinas extends CatalogoDeportes {
+    private String descripcionRutina;
+    private String duracion;
 
     public CatalogoRutinas() {
-        this.descripcion = "";
-        this.deporte = "";
-        this.duracion = 0;
-        this.estado = "Activo";
+        super();
+        this.descripcionRutina = "";
+        this.duracion = "";
     }
 
     // Métodos
-    public String getDescripcion() {
-        return descripcion;
+    public String getDescripcionRutina() {
+        return descripcionRutina;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescripcionRutina(String descripcionRutina) {
+        this.descripcionRutina = descripcionRutina;
     }
 
-    public String getDeporte() {
-        return deporte;
+    @Override
+    public String getNombreDeporte() {
+        return nombreDeporte;
     }
 
-    public void setDeporte(String deporte) {
-        this.deporte = deporte;
+    @Override
+    public void setNombreDeporte(String nombreDeporte) {
+        this.nombreDeporte = nombreDeporte;
     }
 
-    public int getDuracion() {
+    public String getDuracion() {
         return duracion;
     }
 
-    public void setDuracion(int duracion) {
+    public void setDuracion(String duracion) {
         this.duracion = duracion;
     }
 
+    @Override
     public String getEstado() {
         return estado;
     }
 
+    @Override
     public void setEstado(String estado) {
         this.estado = estado;
     }

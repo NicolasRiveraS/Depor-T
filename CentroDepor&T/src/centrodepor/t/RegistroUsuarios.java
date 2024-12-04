@@ -1,25 +1,21 @@
-//Centro de capacitación Depor & T
+// Registro, consulta e inactivación de usuarios
 package centrodepor.t;
 
 import javax.swing.JOptionPane;
 import java.io.*;
-import centrodepor.t.Usuario;
-import java.util.ArrayList;
 
 public class RegistroUsuarios extends javax.swing.JFrame {
 
-    //Atributos    
-    private ArrayList<Usuario> usuarios;
-
+    // Constructor
     public RegistroUsuarios() {
         initComponents();
         setTitle("Registro de Usuarios");
         setLocationRelativeTo(null);
         setResizable(false);
         llenarCombo();
-        usuarios = new ArrayList<>();//inicia la lista usuarios
     }
 
+    // Métodos
     public void llenarCombo() {
         jComboBox1.addItem("Deportista");
         jComboBox1.addItem("Padre de familia");
@@ -57,25 +53,23 @@ public class RegistroUsuarios extends javax.swing.JFrame {
                     u.setEstado("Inactivo");
                 }
                 
-                DataOutputStream salida = new DataOutputStream(new FileOutputStream(
-                        "usuario.dat", true));
-                salida.writeUTF(u.getNombre());
-                salida.writeUTF(u.getApe1());
-                salida.writeUTF(u.getApe2());
-                salida.writeUTF(u.getNickname());
-                salida.writeUTF(u.getPassword());
-                salida.writeUTF(u.getCateg());
-                salida.writeUTF(u.getEstado());
-
-                usuarios.add(u);
+                // Agrega el usuario al Array que se encuentra en el Main
+                Main.usuarios.add(u);
                 
                 JOptionPane.showMessageDialog(null,
                         "¡Datos guardados correctamente!", "Datos guardados",
                         JOptionPane.INFORMATION_MESSAGE);
 
-                salida.close();
+                // Limpia los espacios
+                jTextField1.setText("");
+                jTextField2.setText("");
+                jTextField3.setText("");
+                jTextField4.setText("");
+                jPasswordField1.setText("");
+                jComboBox1.setSelectedIndex(0);
+                jRadioButton1.setSelected(true);
             }
-        } catch (IOException ex01) {
+        } catch (Exception ex01) {
             JOptionPane.showMessageDialog(null,
                     "¡Ocurrió un error al guardar!", "Error",
                     JOptionPane.ERROR_MESSAGE);
@@ -84,53 +78,90 @@ public class RegistroUsuarios extends javax.swing.JFrame {
 
     public void consultarUsuario() {
         int encontrado = 0;
+        String buscarNickname = jTextField4.getText();
         try {
-            String buscarNickname = jTextField4.getText();
-            DataInputStream entrada = new DataInputStream(new FileInputStream("usuario.dat"));
-            try {
-                while (true) {
-                    String nombre = entrada.readUTF();
-                    String ape1 = entrada.readUTF();
-                    String ape2 = entrada.readUTF();
-                    String nickname = entrada.readUTF();
-                    String password = entrada.readUTF();
-                    String categ = entrada.readUTF();
-                    String estado = entrada.readUTF();
-
-                    if (buscarNickname.equals(nickname)) {
-                        encontrado = 1;
-                        jTextField1.setText(nombre);
-                        jTextField2.setText(ape1);
-                        jTextField3.setText(ape2);
-                        jTextField4.setText(nickname);
-                        jPasswordField1.setText(password);
-                        if (categ.equals("Deportista")) {
-                            jComboBox1.setSelectedIndex(0);
-                        } else if (categ.equals("Padre de familia")) {
-                            jComboBox1.setSelectedIndex(1);
-                        } else if (categ.equals("Entrenador")) {
-                            jComboBox1.setSelectedIndex(2);//selectedIndex posicion
-                        }
-                        if (estado.equals("Activo")) {
-                            jRadioButton1.setSelected(true);
-                        } else {
-                            jRadioButton2.setSelected(true);
-                        }
-
-                    }
-                }
-            } catch (EOFException ex01) {
-                entrada.close();
+            // Recorre el ArrayList y verifica si existe el usuario
+            for (int i = 0; i < Main.usuarios.size(); i++) {
                 
-                if (encontrado == 0) {
-                    JOptionPane.showMessageDialog(null, "Dato no encontrado\nDigite solo el Nickname", "Dato no encontrado", JOptionPane.ERROR_MESSAGE);
+                if (buscarNickname.equals(Main.usuarios.get(i).getNickname())) {
+                    encontrado = 1;
+                    jTextField1.setText(Main.usuarios.get(i).getNombre());
+                    jTextField2.setText(Main.usuarios.get(i).getApe1());
+                    jTextField3.setText(Main.usuarios.get(i).getApe2());
+                    jTextField4.setText(Main.usuarios.get(i).getNickname());
+                    jPasswordField1.setText(Main.usuarios.get(i).getPassword());
+                    if (Main.usuarios.get(i).getCateg().equals("Deportista")) {
+                        jComboBox1.setSelectedIndex(0);
+                    } else if (Main.usuarios.get(i).getCateg().equals("Padre de familia")) {
+                        jComboBox1.setSelectedIndex(1);
+                    } else if (Main.usuarios.get(i).getCateg().equals("Entrenador")) {
+                        jComboBox1.setSelectedIndex(2);//selectedIndex posicion
+                    }
+                    if (Main.usuarios.get(i).getEstado().equals("Activo")) {
+                        jRadioButton1.setSelected(true);
+                    } else {
+                        jRadioButton2.setSelected(true);
+                    }
+                    
                 }
             }
-        } catch (FileNotFoundException ex02) {
-            JOptionPane.showMessageDialog(null, "Archivo no existe", "Archivo no existe", JOptionPane.ERROR_MESSAGE);
+            if (encontrado == 0) {
+                JOptionPane.showMessageDialog(null, "Dato no encontrado\nDigite solo el Nickname", "Dato no encontrado", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception ex01) {
+        }
+    }
+    
+    public void inactivarUsuario () {
+        int encontrado = 0;
+        String buscarNickname = jTextField4.getText();
+        try {
+            // Recorre el ArrayList y verifica si existe el usuario
+            for (int i = 0; i < Main.usuarios.size(); i++) {
 
-        } catch (IOException ex03) {
-            JOptionPane.showMessageDialog(null, "Error inesperado", "Error inesperado", JOptionPane.ERROR_MESSAGE);
+                if (buscarNickname.equals(Main.usuarios.get(i).getNickname())) {
+                    encontrado = 1;
+                    jTextField1.setText(Main.usuarios.get(i).getNombre());
+                    jTextField2.setText(Main.usuarios.get(i).getApe1());
+                    jTextField3.setText(Main.usuarios.get(i).getApe2());
+                    jTextField4.setText(Main.usuarios.get(i).getNickname());
+                    jPasswordField1.setText(Main.usuarios.get(i).getPassword());
+                    if (Main.usuarios.get(i).getCateg().equals("Deportista")) {
+                        jComboBox1.setSelectedIndex(0);
+                    } else if (Main.usuarios.get(i).getCateg().equals("Padre de familia")) {
+                        jComboBox1.setSelectedIndex(1);
+                    } else if (Main.usuarios.get(i).getCateg().equals("Entrenador")) {
+                        jComboBox1.setSelectedIndex(2);//selectedIndex posicion
+                    }
+                    if (Main.usuarios.get(i).getEstado().equals("Activo")) {
+                        jRadioButton1.setSelected(true);
+                    } else {
+                        jRadioButton2.setSelected(true);
+                    }
+                    
+                    int inactivar = JOptionPane.showConfirmDialog(null, "¿Desea inactivar este usuario?",
+                            "Inactivar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                    
+                    // Inactiva al usuario
+                    if (inactivar == 0) {
+                        Main.usuarios.remove(i);
+                        JOptionPane.showMessageDialog(null, "¡Usuario inactivado satisfactoriamente!", "Inactivación Completada", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    
+                    // Limpia los espacios
+                    jTextField1.setText("");
+                    jTextField2.setText("");
+                    jTextField3.setText("");
+                    jTextField4.setText("");
+                    jPasswordField1.setText("");
+                    jComboBox1.setSelectedIndex(0);
+                    jRadioButton1.setSelected(true);
+                }
+            }
+            if (encontrado == 0) {
+                JOptionPane.showMessageDialog(null, "Dato no encontrado\nDigite solo el Nickname", "Dato no encontrado", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception ex01) {
         }
     }
 
@@ -157,11 +188,9 @@ public class RegistroUsuarios extends javax.swing.JFrame {
         jToolBar1 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 32767));
-        jButton2 = new javax.swing.JButton();
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 32767));
-        jButton3 = new javax.swing.JButton();
-        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 32767));
         jButton4 = new javax.swing.JButton();
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 32767));
+        jButton3 = new javax.swing.JButton();
         jPasswordField1 = new javax.swing.JPasswordField();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
@@ -191,8 +220,6 @@ public class RegistroUsuarios extends javax.swing.JFrame {
 
         jLabel7.setText("Categoría:");
 
-        jButton5.setBackground(null);
-        jButton5.setForeground(null);
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/back-button (1).png"))); // NOI18N
         jButton5.setToolTipText("Regresar");
         jButton5.setFocusPainted(false);
@@ -239,21 +266,6 @@ public class RegistroUsuarios extends javax.swing.JFrame {
         jToolBar1.add(jButton1);
         jToolBar1.add(filler1);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/editar.png"))); // NOI18N
-        jButton2.setToolTipText("Editar Usuario");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButton2);
-        jToolBar1.add(filler2);
-
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/quitar-usuario.png"))); // NOI18N
-        jButton3.setToolTipText("Eliminar Usuario");
-        jToolBar1.add(jButton3);
-        jToolBar1.add(filler3);
-
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/pregunta.png"))); // NOI18N
         jButton4.setToolTipText("Consultar Usuario");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -262,6 +274,16 @@ public class RegistroUsuarios extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(jButton4);
+        jToolBar1.add(filler3);
+
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/quitar-usuario.png"))); // NOI18N
+        jButton3.setToolTipText("Eliminar Usuario");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton3);
 
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -424,10 +446,6 @@ public class RegistroUsuarios extends javax.swing.JFrame {
         agregarUsuario();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         consultarUsuario();
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -436,6 +454,10 @@ public class RegistroUsuarios extends javax.swing.JFrame {
         this.dispose();
         new MenuPrincipal().show(true);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        inactivarUsuario();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -477,10 +499,8 @@ public class RegistroUsuarios extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.Box.Filler filler1;
-    private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
