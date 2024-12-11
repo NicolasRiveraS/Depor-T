@@ -34,4 +34,8 @@ public class CatalogoDeportes extends Catalogos {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    String getDescripcion() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

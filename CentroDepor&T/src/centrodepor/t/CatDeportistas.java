@@ -209,7 +209,6 @@ public class CatDeportistas extends javax.swing.JFrame {
         setTitle("Catálogo de Deportistas");
         setMaximumSize(new java.awt.Dimension(550, 570));
         setMinimumSize(new java.awt.Dimension(550, 570));
-        setPreferredSize(new java.awt.Dimension(550, 570));
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/back-button (1).png"))); // NOI18N
         jButton5.setToolTipText("Regresar");
@@ -231,7 +230,7 @@ public class CatDeportistas extends javax.swing.JFrame {
         jToolBar1.setToolTipText("");
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/agregar.png"))); // NOI18N
-        jButton1.setToolTipText("Agregar Usuario");
+        jButton1.setToolTipText("Agregar Deportista");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -241,7 +240,7 @@ public class CatDeportistas extends javax.swing.JFrame {
         jToolBar1.add(filler1);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/editar.png"))); // NOI18N
-        jButton2.setToolTipText("Editar Usuario");
+        jButton2.setToolTipText("Editar Deportista");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -251,7 +250,7 @@ public class CatDeportistas extends javax.swing.JFrame {
         jToolBar1.add(filler2);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/quitar-usuario.png"))); // NOI18N
-        jButton3.setToolTipText("Eliminar Usuario");
+        jButton3.setToolTipText("Inactivar Deportista");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);

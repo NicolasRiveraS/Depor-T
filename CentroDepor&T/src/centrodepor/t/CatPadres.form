@@ -210,7 +210,7 @@
           <Color blue="cc" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Cat&#xe1;logo de Padres de Familia"/>
+        <Property name="text" type="java.lang.String" value="Cat&#xe1;logo de encargados de Familia"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JToolBar" name="jToolBar1">
@@ -231,7 +231,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/iconos/agregar.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Agregar Usuario"/>
+            <Property name="toolTipText" type="java.lang.String" value="Agregar Padre de Familia"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
@@ -258,7 +258,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/iconos/editar.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Editar Usuario"/>
+            <Property name="toolTipText" type="java.lang.String" value="Editar Padre de Familia"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
@@ -285,7 +285,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/iconos/quitar-usuario.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Eliminar Usuario"/>
+            <Property name="toolTipText" type="java.lang.String" value="Inactivar Padre de Familia"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
@@ -295,7 +295,7 @@
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nombre del Ni&#xf1;o:"/>
+        <Property name="text" type="java.lang.String" value="Nombre del deportista:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField1">
@@ -305,7 +305,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nombre del Padre:"/>
+        <Property name="text" type="java.lang.String" value="Nombre del encargado:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField2">

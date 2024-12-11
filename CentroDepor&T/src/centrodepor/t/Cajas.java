@@ -1,33 +1,10 @@
-
-
-
-
-/* 
-El código comentado es el que el profe nos dio en clase, lo dejo por si
-se puede modificar y usarse en el proyecto.
-Los otros métodos funcionan bien así como están.
-
-Falta implementar lo de los Socket (ver "Módulo 4, punto 2" de las indicaciones).
-
-Pd: La base de datos la hice con usuario "root" y contraseña "Fidelitasw2!"
-Como sale en las líneas 27 y 28.
-*/
-
-
-
-
 package centrodepor.t;
 
-import java.sql.*;
-import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class Cajas extends javax.swing.JFrame {
     // Atributos
-    private static final String URL = "jdbc:mysql://localhost:3306/mysql?zeroDateTimeBehavior=CONVERT_TO_NULL";
-    private static final String usuario = "root";
-    private static final String clave = "Fidelitasw2!";
-    private Statement st;
-    private Connection conn;
+    private DefaultTableModel modelo = new DefaultTableModel();
 
     // Constructor
     public Cajas() {
@@ -35,154 +12,38 @@ public class Cajas extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Cajas");
-        this.conn = null;
-        this.st = null;
-        //llenarCombo();
+        
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Apellidos");
+        modelo.addColumn("Monto");
+        modelo.addColumn("Fecha");
+        
+        enviarInfoBaseDatos();
     }
 
     // Métodos
-    public void conectar() {
-        try {
-            conn = DriverManager.getConnection(
-                    URL, usuario, clave);
-            System.out.println("¡Conectado!");
-
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null,
-                    "Error al conectar\nError: " + ex.getMessage());
-        }
+    public void enviarInfoBaseDatos () {
+        SocketCliente cliente = new SocketCliente();
+        cliente.leerYEnviarArchivo();
     }
-
-    public void desconectar() {
-        try {
-            if (!conn.isClosed()) {
-                conn.close();
-                System.out.println("¡Desconectado!");
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null,
-                    "Error al desconectar\nError: " + ex.getMessage());
-        }
-    }
-
-//    public void llenarCombo() {
-//        jComboBox1.addItem("Programación Básica");
-//        jComboBox1.addItem("Introd. a la Programación");
-//        jComboBox1.addItem("Programación Cliente Servidor");
-//        jComboBox1.addItem("Estructuras de Datos");
-//        jComboBox1.addItem("Fundamentos de Diseño de B.D.");
-//        jComboBox1.setSelectedIndex(0);
-//    }
-//
-//    public void insertar() {
-//        try {
-//            if (jTextField2.getText().equals("")) {
-//                JOptionPane.showMessageDialog(null,
-//                        "Error, ¡no puede dejar campos vacíos!",
-//                        "Campos vacíos", JOptionPane.ERROR_MESSAGE);
-//            } else {
-//                conectar();
-//                st = conn.createStatement();
-//                String SQL = "INSERT INTO Curso(nombreCurso,precio) "
-//                        + "VALUES( '" + jComboBox1.getSelectedItem().toString() + "', " + jTextField2.getText() + ")";
-//                int estado = st.executeUpdate(SQL);
-//                JOptionPane.showMessageDialog(null, "¡Datos agregados correctamente!");
-//                desconectar();
-//            }
-//        } catch (Exception ex) {
-//            JOptionPane.showMessageDialog(null,
-//                    "Error al insertar" + ex.getMessage());
-//        }
-//    }
-//
-//    public void consultar() {
-//        int cont = 0;
-//        String dato;
-//        boolean existe = false;
-//        try {
-//            jTextField2.setText("");
-//
-//            conectar();
-//            dato = jComboBox1.getSelectedItem().toString();
-//            Statement s = conn.createStatement();
-//            ResultSet rs = s.executeQuery("select * from Curso where nombreCurso = '" + dato + "'");    // Conjunto de filas y columnas
-//
-//            while (rs.next()) {
-//                if (dato.equals(rs.getString(2))) {                             // Usa 2 porque es la columna del nombre
-//                    jTextField2.setText(rs.getString(3));                       // Usa 3 porque es la columna del precio
-//                    cont++;                                                     //     ↑ Ambos index empiezan en 1 ↑    
-//                }
-//            }
-//
-//            if (cont > 0) {
-//                existe = true;
-//            } else {
-//                JOptionPane.showMessageDialog(null, "¡El dato consultado no se encuentra registrado!", "Dato no encontrado", JOptionPane.INFORMATION_MESSAGE);
-//            }
-//            desconectar();
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "¡Error al consultar!\n" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-//        }
-//    }
-//
-//    public void eliminar() {
-//        String dato;
-//
-//        try {
-//            conectar();
-//            dato = jComboBox1.getSelectedItem().toString();
-//            Statement s = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE); // Ponemos la tabla en "modo actualizable"
-//            s.executeUpdate("delete from Curso where nombreCurso = '" + dato + "'");
-//
-//            JOptionPane.showMessageDialog(null, "¡Registro eliminado!");
-//
-//            jTextField2.setText("");
-//            jTextField2.requestFocus();
-//
-//            desconectar();
-//
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "¡Error al eliminar!\n" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-//        }
-//    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField2 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
-        jLabel2.setText("Nombre");
-
-        jLabel3.setText("Precio");
-
-        jButton3.setText("Agregar");
+        jButton3.setText("Actualizar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setText("Consultar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        jButton5.setText("Eliminar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
             }
         });
 
@@ -196,71 +57,70 @@ public class Cajas extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Cajas");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jLabel1.setText("AAA");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(21, 21, 21)
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE))
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(29, 29, 29))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton6)
-                        .addGap(20, 20, 20))))
+                        .addComponent(jButton6)))
+                .addGap(25, 25, 25))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(233, Short.MAX_VALUE)
+                    .addComponent(jLabel6)
+                    .addContainerGap(234, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jButton6)
+                .addGap(23, 23, 23)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
-                .addContainerGap())
+                .addComponent(jButton3)
+                .addGap(20, 20, 20))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(649, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        //insertar();
+        //
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        //consultar();
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        //eliminar();
-    }//GEN-LAST:event_jButton5ActionPerformed
 
     // Regresa al Menú Principal
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -306,12 +166,10 @@ public class Cajas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

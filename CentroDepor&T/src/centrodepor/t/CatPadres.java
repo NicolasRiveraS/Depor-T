@@ -214,14 +214,14 @@ public class CatPadres extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 204));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Catálogo de Padres de Familia");
+        jLabel1.setText("Catálogo de encargados de Familia");
 
         jToolBar1.setBorder(null);
         jToolBar1.setFloatable(false);
         jToolBar1.setToolTipText("");
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/agregar.png"))); // NOI18N
-        jButton1.setToolTipText("Agregar Usuario");
+        jButton1.setToolTipText("Agregar Padre de Familia");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -231,7 +231,7 @@ public class CatPadres extends javax.swing.JFrame {
         jToolBar1.add(filler1);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/editar.png"))); // NOI18N
-        jButton2.setToolTipText("Editar Usuario");
+        jButton2.setToolTipText("Editar Padre de Familia");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -241,7 +241,7 @@ public class CatPadres extends javax.swing.JFrame {
         jToolBar1.add(filler2);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/quitar-usuario.png"))); // NOI18N
-        jButton3.setToolTipText("Eliminar Usuario");
+        jButton3.setToolTipText("Inactivar Padre de Familia");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -249,7 +249,7 @@ public class CatPadres extends javax.swing.JFrame {
         });
         jToolBar1.add(jButton3);
 
-        jLabel2.setText("Nombre del Niño:");
+        jLabel2.setText("Nombre del deportista:");
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -257,7 +257,7 @@ public class CatPadres extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Nombre del Padre:");
+        jLabel3.setText("Nombre del encargado:");
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

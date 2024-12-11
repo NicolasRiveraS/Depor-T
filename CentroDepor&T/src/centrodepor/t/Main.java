@@ -1,6 +1,5 @@
 package centrodepor.t;
-import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.*;
 
 public class Main {
     // Atributos
@@ -11,7 +10,7 @@ public class Main {
     public static LinkedList<CatalogoDeportes> catDeportes = new LinkedList<>();
     public static LinkedList<CatalogoRutinas> catRutinas = new LinkedList<>();
     
-    // Constructor
+    // Constructor Main
     public static void main(String[] args) {
         // Crea el menú principal y lo hace visible
         MenuPrincipal.main(args);

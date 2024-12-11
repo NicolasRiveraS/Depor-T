@@ -78,5 +78,9 @@ public class Usuario {
     public void setCateg(String categ) {
         this.categ = categ;
     }
+
+    String getApellido() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }
