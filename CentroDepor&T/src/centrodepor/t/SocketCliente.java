@@ -44,6 +44,47 @@ public class SocketCliente {
         }
     }
     
+    public void recibirInformacion (int puerto) {
+        while (true) {            
+            try {
+                sc = new Socket("127.0.0.1", puerto);
+                entrada = new DataInputStream(sc.getInputStream());
+                
+                DataOutputStream salidaArchivo = new DataOutputStream(new FileOutputStream("tablaCajas.dat", true));
+                DataInputStream entradaArchivo = new DataInputStream(new FileInputStream("tablaCajas.dat"));
+                try {
+                    while (true) {
+                        String nombre = entradaArchivo.readUTF();
+                        String apellidos = entradaArchivo.readUTF();
+                        double monto = entradaArchivo.readDouble();
+                        String fecha = entradaArchivo.readUTF();
+                        
+                        if () {
+                            
+                        }
+                    }
+                } 
+                catch (EOFException e) {
+                }
+                
+                
+                // Almacena los datos recibidos en un Archivo, para luego poder ser leído en el módulo de Cajas
+
+                salidaArchivo.writeUTF(entrada.readUTF());
+                salidaArchivo.writeUTF(entrada.readUTF());
+                salidaArchivo.writeDouble(entrada.readDouble());
+                salidaArchivo.writeUTF(entrada.readUTF());
+                
+                salidaArchivo.close();
+                
+                sc.close();
+                break;
+            } 
+            catch (IOException e) {
+            }
+        }
+    }
+    
         // Archivo
     /* 
         Este método lee el archivo "facturacion.dat" y almacena los atributos relevantes en un arreglo de objetos.
@@ -79,7 +120,7 @@ public class SocketCliente {
             for (int i = 0; i < arregloDatos.size(); i++) {
                 // Por cada objeto, inicializa un hilo para ejecutar el servidor
                 // Y se cambia el número de puerto en cada vuelta para que funcione paralelamente
-                HiloServidor hiloServidor = new HiloServidor((5432 + i), 0);
+                HiloServidor hiloServidor = new HiloServidor((5432 + i));
                 hiloServidor.start();
                 // Hace una pequeña pausa para asegurarse que el servidor inicializa por completo
                 try {
@@ -95,7 +136,7 @@ public class SocketCliente {
         } catch (IOException e) {
         }
     }
-
+    
     // Getters y Setters para atributos relevantes
     public String getNombre() {
         return nombre;

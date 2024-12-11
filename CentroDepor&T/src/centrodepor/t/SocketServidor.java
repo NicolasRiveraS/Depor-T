@@ -140,16 +140,11 @@ public class SocketServidor {
             
             // Recorre el arreglo
             for (int i = 0; i < arregloDatos.size(); i++) {
-                // Por cada objeto, inicializa un hilo para ejecutar el servidor
+                // Por cada objeto, inicializa un hilo para ejecutar el cliente
                 // Y se cambia el número de puerto en cada vuelta para que funcione paralelamente
-                HiloServidor hiloServidor = new HiloServidor((5432 + i), 1);
-                hiloServidor.start();
-                // Hace una pequeña pausa para asegurarse que el servidor inicializa por completo
-                try {
-                    Thread.sleep(1000);
-                } 
-                catch (InterruptedException ex) {
-                }
+                HiloCliente hiloCliente = new HiloCliente((5432 + i));
+                hiloCliente.start();
+                
                 // Llama al método encargado de enviar los datos
                 // Y se cambia el número de puerto en cada vuelta para que funcione paralelamente
                 enviarInformacion((5432 + i), arregloDatos.get(i).getNombre(), arregloDatos.get(i).getApellidos(), arregloDatos.get(i).getMonto(), arregloDatos.get(i).getFecha());
@@ -158,7 +153,7 @@ public class SocketServidor {
         catch (Exception e) {
         }
     }
-    
+     
     // Conectar con la Base de Datos
     private void conectar() {
         try {
