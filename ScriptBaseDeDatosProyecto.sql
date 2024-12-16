@@ -7,5 +7,5 @@ apellidos varchar(50) not null,
 monto decimal not null,
 fecha varchar (10));
 
-select * from Cajas;
-delete from Cajas;
+select * from Cajas; -- Comprobación manual de la base
+delete from Cajas; -- Eliminación de los datos (para pruebas de desarrollo)

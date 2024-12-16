@@ -50,26 +50,8 @@ public class SocketCliente {
                 sc = new Socket("127.0.0.1", puerto);
                 entrada = new DataInputStream(sc.getInputStream());
                 
-                DataOutputStream salidaArchivo = new DataOutputStream(new FileOutputStream("tablaCajas.dat", true));
-                DataInputStream entradaArchivo = new DataInputStream(new FileInputStream("tablaCajas.dat"));
-                try {
-                    while (true) {
-                        String nombre = entradaArchivo.readUTF();
-                        String apellidos = entradaArchivo.readUTF();
-                        double monto = entradaArchivo.readDouble();
-                        String fecha = entradaArchivo.readUTF();
-                        
-                        if () {
-                            
-                        }
-                    }
-                } 
-                catch (EOFException e) {
-                }
-                
-                
                 // Almacena los datos recibidos en un Archivo, para luego poder ser leído en el módulo de Cajas
-
+                DataOutputStream salidaArchivo = new DataOutputStream(new FileOutputStream("tablaCajas.dat", true));
                 salidaArchivo.writeUTF(entrada.readUTF());
                 salidaArchivo.writeUTF(entrada.readUTF());
                 salidaArchivo.writeDouble(entrada.readDouble());
@@ -78,7 +60,6 @@ public class SocketCliente {
                 salidaArchivo.close();
                 
                 sc.close();
-                break;
             } 
             catch (IOException e) {
             }

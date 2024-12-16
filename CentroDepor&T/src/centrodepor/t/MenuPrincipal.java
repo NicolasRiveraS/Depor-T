@@ -106,6 +106,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void cajasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajasBotonActionPerformed
         this.dispose();
+        System.out.println("Cargando...");
         new Cajas().show(true);
     }//GEN-LAST:event_cajasBotonActionPerformed
 

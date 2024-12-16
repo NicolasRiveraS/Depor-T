@@ -34,15 +34,21 @@ public class Cajas extends javax.swing.JFrame {
         servidor.consultarYEnviarBaseDatos();
     }
     
+    public void limpiarTabla () {
+        while (modelo.getRowCount() > 0) {
+            modelo.removeRow(0);
+        }
+    }
+    
     public void llenarTabla () {
         double total = 0;
-        boolean existe = false;
+        boolean existeFecha = false;
         try {
             String buscarFecha = jTextField1.getText();
             DataInputStream entrada = new DataInputStream(new FileInputStream("tablaCajas.dat"));
             
             try {
-                while (true) {                    
+                while (true) {
                     String nombre = entrada.readUTF();
                     String apellidos = entrada.readUTF();
                     double monto = entrada.readDouble();
@@ -50,9 +56,9 @@ public class Cajas extends javax.swing.JFrame {
                     
                     if (buscarFecha.equals(fecha)) {
                         total += monto;
-                        modelo.addRow(new Object[] {nombre, apellidos, monto, fecha});
+                        modelo.addRow(new Object[]{nombre, apellidos, monto, fecha});
                         jTable1.setModel(modelo);
-                        existe = true;
+                        existeFecha = true;
                     }
                 }
             } 
@@ -60,13 +66,12 @@ public class Cajas extends javax.swing.JFrame {
                 entrada.close();
                 jTextField1.setText("");
                 jLabel2.setText("Monto Total: " + total);
-                
-                if (!existe) {
-                    JOptionPane.showMessageDialog(null, "No hay registros almacenados con la fecha indicada", "No hay registro", JOptionPane.ERROR_MESSAGE);
-                }
             }
         } 
         catch (IOException e) {
+            if (!existeFecha) {
+                JOptionPane.showMessageDialog(null, "No hay registros almacenados con la fecha indicada", "No hay registro", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
     
@@ -207,15 +212,17 @@ public class Cajas extends javax.swing.JFrame {
         new MenuPrincipal().show(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    // Refrescar
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        for (int i = 0; i < modelo.getRowCount(); i++) {
-            modelo.removeRow(i);
-        }
+        System.out.println("Cargando...");
+        limpiarTabla();        
         jLabel2.setText("Monto Total:");
         obtenerInfoBaseDatos();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    // Buscar
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        limpiarTabla();
         llenarTabla();
     }//GEN-LAST:event_jButton1ActionPerformed
     
